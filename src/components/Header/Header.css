@@ -1,0 +1,21 @@
+header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #5138A1;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    overflow: auto;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+
+  }
+/* 
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  } */

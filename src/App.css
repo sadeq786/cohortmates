@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -14,37 +9,15 @@
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 .jumbotron {
   width: 100%;
   margin-left: 0;
-  height: 400px;
+  height: 300px;
   color: white;
   background-image: url("./images/pixelgame.jpg");
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
-header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background: #5138A1;
-  height: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  overflow: auto;
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1 {
+  font-weight: bold;
 }
