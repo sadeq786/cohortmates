@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 
 const Header = props => (
-    <header className="sticky">
+<nav className="navbar sticky-top navbar-light bg-light ml-5">
         <div className="container">
             <div className="row">
                 <div className="col-md-4">
@@ -14,7 +14,7 @@ const Header = props => (
           <span> {props.score} </span>
                     </span>
                     <span> | Top Score:
-          <span> {props.total}</span>
+          <span> {props.topScore}</span>
                     </span></div>
             </div>
         </div>
@@ -23,7 +23,7 @@ const Header = props => (
 
 
 
-    </header>
+    </nav>
 );
 
 export default Header;
