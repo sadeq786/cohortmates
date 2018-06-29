@@ -10,29 +10,56 @@ class App extends React.Component {
   //define state
   state = {
     classmates,
-    count: 4,
-    total: 40,
+    updatedClassmates: [],
+    count: 0,
+    total: 0,
     topScore: 5
   }
 
-  evaluateScore = () => {
+  reset = () => {
+    this.setState({ count: 0 });
+    this.setState({ updatedClassmates: [] });
+  }
+
+  // we are passing in the id of the clicked object. 
+  evaluateScore = (id, clickedStatus) => {
     console.log('clicked');
-    console.log('id', this.id);
-    //if else statements to check if card was clicked. 
-    console.log('this: ', this );
-    this.setState({ count: this.state.count + 1 });
-    this.setState({ total: this.state.total + 1 });
-    console.log(this.state.count);
-    console.log(this.state.total);
+    console.log('id : ', id);
+    console.log('clickedStatus : ', clickedStatus);
+    clickedStatus = true;
+    // once clicked, check if classmate id is in this.state.updatedClassmates
+    // else push id into this.state.updatedClassmates
+    if (this.state.updatedClassmates.includes(id)) {
+      console.log('ID ALREADY IN ARRAY');
+      console.log('YOU LOST. NOW RESET APPROPRIATE VALUES');
+      this.reset();
+
+      
+
+
+      console.log("post loss", this.state.count);
+    } else {
+      this.state.updatedClassmates.push(id);
+      console.log('updated Classmates array: ', this.state.updatedClassmates);
+      this.setState({ count: this.state.count + 1 });
+      // HERE CHECK FOR TOP SCORE. 
+      if (this.state.count > this.state.total) {
+        this.setState({ total: this.state.count })
+      } else {
+        this.setState({ total: this.state.total + 1 });
+      }
+    }
   };
 
   render() {
     return (
+      
       <Wrapper>
-        <Header 
-         score = {this.state.count}
-         total = {this.state.total}
-         // displayMessage
+        {console.log('new state values: ', this.state)}
+        <Header
+          score={this.state.count}
+          total={this.state.total}
+        // displayMessage
         />
         {/* <div className="jumbotron">
           <h1 className="text-center">Clicky Game!</h1>
@@ -41,27 +68,31 @@ class App extends React.Component {
         {
           // FIRST, GET ALL THE CARDS TO SHOW UP. ✅
           // make score and top score increment one you click on the card. ✅
-          // check if this particular card has been clicked in this iteration before we change score and top score. 
+          // check if this particular card has been clicked in this iteration before we change score and top score. ✅
           // shuffle cards 
         }
-        
-        
+
+
         {this.state.classmates.map(classmate => (
-        <Classmate 
-          //id
-          id={classmate.id}
-          // key. Don't use this as a prop and just leave it for REACT. Use id insterad
-          key={classmate.id}
-          // clickedStatus
-          clickedStatus={classmate.clickedStatus}
-          clickEvent = {this.evaluateScore}
-          name={classmate.name}
-          image={classmate.image}
-          
-        />
+
+          // WE SHOULD ALSO SHUFFLE CARD IDs RANDOMLY. 
+          <Classmate
+            //id. This prop is what we are using to identify if card has been clicked. 
+            id={classmate.id}
+            // key. Don't use this as a prop and just leave it for REACT. Use id insterad
+            key={classmate.id}
+            // clickedStatus
+            clickedStatus={classmate.clickedStatus}
+            // ** Here, we are passing the function evaluateScore which takes in an id from classmate.js
+            // ** 
+            clickEvent={this.evaluateScore}
+            name={classmate.name}
+            image={classmate.image}
+
+          />
         ))
-      }
-    
+        }
+
 
 
       </Wrapper>
